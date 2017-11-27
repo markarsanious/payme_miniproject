@@ -1,0 +1,27 @@
+
+<div *ngIf="authentication.error_message" class="col-lg-10 col-md-10 alert container alert-danger">
+    <strong>Warning! </strong> &nbsp; {{authentication.error_message}}
+</div>
+        
+<div *ngIf="authentication.success_message" class="col-lg-10 col-md-10 alert container alert-success">
+    &nbsp; {{authentication.success_message}}
+</div>
+    
+<div class="perfect-centering border-class">    
+<form *ngIf="!user_authenticated" class="center">
+    <div class="form-row">
+        <div class="form-group col-lg-12"> 
+            <label for="inputAddress">Email: </label>
+            <input type="email" required="required" class="form-control" name="email" [(ngModel)]= "email" id="inputEmail" placeholder="Enter your email address">
+        </div>
+        
+        <div class="form-group col-lg-12 col-md-12">
+            <label>Password: </label><br/>
+            <input type="password" required="required" class="form-control" name="password" [(ngModel)]= "password" id="inputPassword" placeholder="Enter password"/>
+        </div>           
+    </div>
+     
+    <div class="text-center"><button (click)="login()" type="submit" class="text-center btn btn-dark">Sign in</button></div>
+</form>
+
+</div>

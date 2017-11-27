@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li *ngIf="authentication.is_authenticated && authentication.user_type!=null && authentication.user_type==='0' "class="nav-item">
+        <a class="nav-link" routerLink="/admin/template/create">Create template</a>
+      </li>
+
+      <li *ngIf="authentication.is_authenticated && authentication.user_type!=null && authentication.user_type==='0' "class="nav-item">
+        <a class="nav-link" routerLink="/about">Add admin</a>
+      </li>
+
+      <li *ngIf="authentication.is_authenticated && authentication.user_type!=null && authentication.user_type!=='0' "class="nav-item">
+        <a class="nav-link" routerLink="/user/transfer">Transfer</a>
+      </li>
+      
+      <li *ngIf="authentication.is_authenticated && authentication.user_type!=null && authentication.user_type!=='0' "class="nav-item">
+        <a class="nav-link" routerLink="/user/deposit">Deposit</a>
+      </li>
+      
+      <li *ngIf="authentication.is_authenticated && authentication.user_type!=null && authentication.user_type!=='0' "class="nav-item">
+        <a class="nav-link" routerLink="/user/withdraw">Withdraw</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <li *ngIf="authentication.is_authenticated" class="nav-item">
+            <h4 class="nav-link">{{authentication.user_name}}</h4>
+        </li>
+        
+        <li *ngIf="!authentication.is_authenticated" class="nav-item active">
+          <a class="nav-link" routerLink="/signup">Signup<span class="sr-only">(current)</span></a>
+        </li>
+        
+        <li *ngIf="!authentication.is_authenticated" class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="authentication.is_authenticated" class="nav-item">
+         <a class="nav-link"><div (click)="logout()">Logout</div></a>
+        </li>
+
+      </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+

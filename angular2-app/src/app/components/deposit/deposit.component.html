@@ -1,0 +1,20 @@
+<div *ngIf="error_message" class="col-lg-10 col-md-10 alert container alert-danger">
+    {{error_message}}
+</div>
+    
+<div *ngIf="success_message" class="col-lg-10 col-md-10 alert container alert-success">
+    {{success_message}}
+</div>
+    
+<div *ngIf="!success_message && authentication.is_authenticated && authentication.user_type!=='0'"  class="perfect-centering border-class">
+    <form class="center">
+        <div class="form-row">
+            <div class="form-group col-lg-12 col-md-12">
+                <label for="inputAmount">Amount: </label><br/>
+                <input type="number" required="required" class="form-control" name="amount" [(ngModel)]= "amount" id="inputAmount" placeholder="Enter amount you want to deposit"/>
+            </div>           
+        </div>
+            
+        <div class="text-center"><button (click)="deposit()" type="submit" class="text-center btn btn-dark">Deposit</button></div>
+    </form>
+</div>        
